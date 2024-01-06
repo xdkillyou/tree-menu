@@ -22,7 +22,7 @@ defineExpose({
     class="absolute top-0 left-0 right-0 bottom-0"
   ></div>
 
-  <Transition>
+  <Transition name="slide">
     <div
       v-show="isTreeMenuShow"
       class="absolute h-100vh w-300px bg-black text-white"

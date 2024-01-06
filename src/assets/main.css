@@ -1,0 +1,11 @@
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s;
+  transform: translateX(0);
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transition: all 0.3s;
+  transform: translateX(200px);
+}

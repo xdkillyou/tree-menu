@@ -9,5 +9,5 @@ export interface IMenuItem {
   text: string;
   expand: boolean;
   path: string;
-  children?: IMenuItem[];
+  children: IMenuItem[];
 }

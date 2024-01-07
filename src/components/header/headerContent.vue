@@ -15,20 +15,45 @@ function addPropertyToRawData(
         ? menuItemRawData.key
         : `${parentPath}/${menuItemRawData.key}`;
 
-    if (menuItemRawData.children) {
-      return {
-        ...menuItemRawData,
-        expand: false,
-        path,
-        children: addPropertyToRawData(menuItemRawData.children, path),
-      };
-    } else {
-      return { ...menuItemRawData, expand: false, path };
-    }
+    return {
+      ...menuItemRawData,
+      expand: false,
+      path,
+      children: menuItemRawData.children
+        ? addPropertyToRawData(menuItemRawData.children, path)
+        : [],
+    };
+  });
+}
+const treeMenu = ref(addPropertyToRawData(treeMenuRawData));
+// console.log(treeMenu.value);
+
+function updateTreeMenu(newData: IMenuItem[]) {
+  treeMenu.value = newData;
+}
+
+function updateExpandStatus(
+  treeMenuItem: IMenuItem[],
+  targetPath: string = ''
+): IMenuItem[] {
+  const targets = targetPath.split('/');
+
+  return treeMenuItem.map((menuItem: IMenuItem) => {
+    return {
+      ...menuItem,
+      expand: targets.includes(menuItem.key) ? true : false,
+      children:
+        menuItem.children?.length > 0
+          ? updateExpandStatus(menuItem.children, targetPath)
+          : [],
+    };
   });
 }
 
-const treeMenu = ref(addPropertyToRawData(treeMenuRawData));
+function expandTreeMenu(path: string = '') {
+  updateTreeMenu(updateExpandStatus(treeMenu.value, path));
+}
+provide('expandEvent', expandTreeMenu);
 </script>
 
 <template>

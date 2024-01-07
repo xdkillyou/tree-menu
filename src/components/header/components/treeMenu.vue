@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { type IMenuItem } from '@/interface/data';
+
+const props = defineProps({
+  data: {
+    type: Array as PropType<IMenuItem[]>,
+    default: () => [],
+  },
+});
+
 const isTreeMenuShow = ref(false);
 function show() {
   isTreeMenuShow.value = true;

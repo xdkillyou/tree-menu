@@ -1,7 +1,34 @@
 <script setup lang="ts">
 import TreeMenu from '@/components/header/components/treeMenu.vue';
+import { treeMenuRawData } from '@/mock/data';
+import { type IMenuItem, type IMenuItemRawData } from '@/interface/data';
 
 const treeMenuRef = ref();
+
+function addPropertyToRawData(
+  rawData: IMenuItemRawData[],
+  parentPath: string = ''
+): IMenuItem[] {
+  return rawData.map((menuItemRawData: IMenuItemRawData) => {
+    const path =
+      parentPath === ''
+        ? menuItemRawData.key
+        : `${parentPath}/${menuItemRawData.key}`;
+
+    if (menuItemRawData.children) {
+      return {
+        ...menuItemRawData,
+        expand: false,
+        path,
+        children: addPropertyToRawData(menuItemRawData.children, path),
+      };
+    } else {
+      return { ...menuItemRawData, expand: false, path };
+    }
+  });
+}
+
+const treeMenu = ref(addPropertyToRawData(treeMenuRawData));
 </script>
 
 <template>
@@ -14,6 +41,6 @@ const treeMenuRef = ref();
       三
     </button>
 
-    <TreeMenu ref="treeMenuRef" />
+    <TreeMenu ref="treeMenuRef" :data="treeMenu" />
   </div>
 </template>

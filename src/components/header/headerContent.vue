@@ -2,10 +2,15 @@
 import TreeMenu from '@/components/header/components/treeMenu.vue';
 import { usePathStore } from '@/stores/index';
 import { treeMenuRawData } from '@/mock/data';
-import { type IMenuItem, type IMenuItemRawData } from '@/interface/data';
+import {
+  type IMenuItem,
+  type IMenuItemRawData,
+  type IMenuSelectLists,
+} from '@/interface/data';
 
 const treeMenuRef = ref();
 const pathStore = usePathStore();
+const selectLists = ref<IMenuSelectLists[]>([]);
 
 function addPropertyToRawData(
   rawData: IMenuItemRawData[],
@@ -16,6 +21,11 @@ function addPropertyToRawData(
       parentPath === ''
         ? menuItemRawData.key
         : `${parentPath}/${menuItemRawData.key}`;
+
+    selectLists.value.push({
+      text: menuItemRawData.text,
+      path,
+    });
 
     return {
       ...menuItemRawData,
@@ -71,6 +81,6 @@ provide('expandEvent', expandTreeMenu);
       三
     </button>
 
-    <TreeMenu ref="treeMenuRef" :data="treeMenu" />
+    <TreeMenu ref="treeMenuRef" :data="treeMenu" :selectLists="selectLists" />
   </div>
 </template>

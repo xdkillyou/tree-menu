@@ -4,6 +4,11 @@ export interface IMenuItemRawData {
   children?: IMenuItemRawData[];
 }
 
+export interface IMenuSelectLists {
+  path: string;
+  text: string;
+}
+
 export interface IMenuItem {
   key: string;
   text: string;

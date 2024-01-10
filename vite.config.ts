@@ -16,7 +16,7 @@ export default defineConfig({
         /\.vue\?vue/, // .vue
         /\.md$/, // .md
       ],
-      imports: ['vue', 'pinia'],
+      imports: ['vue', 'pinia', '@vueuse/core'],
       dts: './auto-imports.d.ts',
       eslintrc: {
         enabled: true,

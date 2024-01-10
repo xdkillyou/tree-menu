@@ -28,7 +28,7 @@ function expandItem(path: string) {
   <div :class="item.expand ? 'bg-gray-600' : ''">
     <div
       @click="() => expandItem(item.path)"
-      class="px-15px py-10px"
+      class="px-15px py-10px cursor-pointer"
       :class="item.expand ? 'text-yellow' : ''"
     >
       {{ item.text }}

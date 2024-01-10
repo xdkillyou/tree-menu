@@ -1,46 +1,37 @@
-# tree-meun
+# Tree-munu([demo](`https://xdkillyou.github.io/`))
 
-This template should help get you started developing with Vue 3 in Vite.
+## 規格
 
-## Recommended IDE Setup
+- Vue 3.3.11
+- Vite 5.0.10
+- TypeScript
+- UnoCSS
+- PNPM
+- VueUse
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 基本需求
 
-## Type Support for `.vue` Imports in TS
+- 側邊選單
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+  - 有按鈕可以收合、展開選單
+  - 展開時，點擊空白處需收合選單
+  - 點擊選單內內容，可以highlight並展開子元素
+  - 一次只會有一個展開
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- 主頁面
+  - 畫面正中心(撇除header)有個九宮格，有指定的樣式
+  - 指定九宮格部分格子會有閃爍動畫，有指定的樣式
+  - 指定九宮格部分格子會有移動小球，有指定的樣式，並且格子內的動畫不會影響到小球
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 額外需求
 
-## Customize configuration
+- 側邊選單
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+  - 實作下拉選單，須包含所有種類，選擇後自動展開該項目
+  - 實作記憶功能，關閉分頁後開啟可以記憶項目
+  - 在效能考量下設計可收合、展開超過一百層的選單
 
-## Project Setup
-
-```sh
-pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+- 主頁面
+  - 使用不同動畫執行方式繪製動畫
+  - 四顆球往同一座標移動
+  - 在效能考量下，設計可同時存在一百顆球，且指定飛行起點、終點

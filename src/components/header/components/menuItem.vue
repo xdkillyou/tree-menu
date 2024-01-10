@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { type IMenuItem } from '@/interface/data';
+import { type IMenuItem, type IUpdateMenu } from '@/interface/data';
+import { usePathStore } from '@/stores/index';
 import MenuItem from './menuItem.vue';
 
 defineProps({
@@ -13,17 +14,20 @@ defineProps({
   },
 });
 
-function expandItem(item: IMenuItem) {
-  item.expand = !item.expand;
-}
+const pathStore = usePathStore();
 
 const expandEvent = inject('expandEvent') as IUpdateMenu;
+
+function expandItem(path: string) {
+  pathStore.updatePath(path);
+  expandEvent(path);
+}
 </script>
 
 <template>
   <div :class="item.expand ? 'bg-gray-600' : ''">
     <div
-      @click="() => expandEvent(item.path)"
+      @click="() => expandItem(item.path)"
       class="px-15px py-10px"
       :class="item.expand ? 'text-yellow' : ''"
     >

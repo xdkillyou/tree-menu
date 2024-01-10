@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import TreeMenu from '@/components/header/components/treeMenu.vue';
+import { usePathStore } from '@/stores/index';
 import { treeMenuRawData } from '@/mock/data';
 import { type IMenuItem, type IMenuItemRawData } from '@/interface/data';
 
 const treeMenuRef = ref();
+const pathStore = usePathStore();
 
 function addPropertyToRawData(
   rawData: IMenuItemRawData[],
@@ -26,7 +28,10 @@ function addPropertyToRawData(
   });
 }
 const treeMenu = ref(addPropertyToRawData(treeMenuRawData));
-// console.log(treeMenu.value);
+
+if (pathStore.path !== '') {
+  expandTreeMenu(pathStore.path);
+}
 
 function updateTreeMenu(newData: IMenuItem[]) {
   treeMenu.value = newData;

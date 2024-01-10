@@ -17,7 +17,7 @@ function expandItem(item: IMenuItem) {
   item.expand = !item.expand;
 }
 
-const expandEvent = inject('expandEvent');
+const expandEvent = inject('expandEvent') as IUpdateMenu;
 </script>
 
 <template>

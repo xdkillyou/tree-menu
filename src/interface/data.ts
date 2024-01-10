@@ -11,3 +11,7 @@ export interface IMenuItem {
   path: string;
   children: IMenuItem[];
 }
+
+export interface IUpdateMenu {
+  (path: string): undefined;
+}

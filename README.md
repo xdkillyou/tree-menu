@@ -42,5 +42,5 @@
 
 ## 遇到的問題
 
-- UnoCSS自定義keyframs & animation設定，[參考]('https://juejin.cn/post/7116730180252467236')
-- 動畫Index issue，[參考]('https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/')
+- UnoCSS自定義keyframs & animation設定，[參考](https://juejin.cn/post/7116730180252467236)
+- 動畫Index issue，[參考](https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/)

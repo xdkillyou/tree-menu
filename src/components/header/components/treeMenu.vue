@@ -63,7 +63,7 @@ defineExpose({
   <Transition name="slide">
     <div
       v-show="isTreeMenuShow"
-      class="fixed top-0 bottom-0 w-200px bg-black text-white z-1 overflow-y-scroll"
+      class="fixed top-0 bottom-0 w-200px bg-black text-white z-1 overflow-y-auto"
     >
       <select
         v-model="selected"
